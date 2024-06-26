@@ -1,14 +1,15 @@
 <template>
-   <q-toolbar class="text-primary  shadow-6 column justify-start" >
+   <q-toolbar class="text-primary  shadow-6 column justify-start items-center" >
        <div class="row justify-between items-center">
-        <div>
+        <div class="login-btn-group">
+            <q-btn flat class="text-white hambergur-menu" icon="menu"></q-btn>
              <q-btn class="register-btn"><a>ثبت نام</a></q-btn>
              <q-btn class="entrance-btn"><a> ورود</a></q-btn>
             <!-- <q-btn class="consult-btn"> <a> درخواست مشاوره</a></q-btn> -->
        </div>
        <q-space/>
        <q-toolbar-title   class="text-white title-container">
-         <h6  class="title q-ml-auto">کارگزاری راه سبز توسعه امید </h6>
+         <h6  class="title q-mr-auto">کارگزاری راه سبز توسعه امید </h6>
        </q-toolbar-title>
        </div>
       <div dir="rtl" class="row justify-start items-center q-mr-auto">
@@ -35,6 +36,7 @@
              </li>
             
         </ul>
+    
       </div>
     </q-toolbar>
 </template>
@@ -103,6 +105,27 @@
 }
 .navLink-btn {
     font-size: 14px;
+}
+.hambergur-menu{
+    display: none;
+}
+@media only screen and (max-width: 630px) {
+    .login-btn-group{
+        display: none;
+    }
+    .navLink-container{
+        display: none;
+    }
+    .title-container{
+        padding: 0px;
+    }
+    .title{
+  
+    font-size: 17px;
+}
+.hambergur-menu{
+    display: block;
+}
 }
 </style>
      
