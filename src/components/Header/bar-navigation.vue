@@ -4,12 +4,12 @@
     <div class="contact-container">
         <a class="cursor-pointer">
             <span class="bar-link">درباره ما</span>
-            <q-img class="q-mx-sm" width="16px" src="/icons/letter.svg"/>
+            <q-img class="q-mx-md" width="20px" src="/icons/letter.svg"/>
            
         </a>
         <a class="cursor-pointer" >
             <span class="bar-link">تماس با ما</span>    
-            <q-img  class="q-mx-sm" width="20px" src="/icons/info_icon.svg"/>
+            <q-img  class="q-mx-md" width="20px" src="/icons/info_icon.svg"/>
         </a>
     </div>
    
