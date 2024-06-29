@@ -23,8 +23,10 @@
                   </div>
                 </div>
               </div>
-
-              <InsurancePlans/>
+               <div class="column">
+                <InsuranceTypes/>
+                <InsurancePlans/>
+               </div>
             </div>
 </template>
      
@@ -32,11 +34,12 @@
      import { defineComponent } from 'vue'
      import apiService from '@/services/api-services.js';
      import InsurancePlans from 'src/components/Insurance-Plans/insurance-plans.vue';
-     
+     import InsuranceTypes from 'src/components/Insurance-Types/insurance-types.vue';
      export default defineComponent({
        name: 'InsuranceCentre',
        components:{
-        InsurancePlans
+        InsurancePlans ,
+        InsuranceTypes
        },
        data(){
         return {
