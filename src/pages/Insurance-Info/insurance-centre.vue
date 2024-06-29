@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <div class="flex flex-center">
     <div class="insurance-info-container bg-primary">
                 <div class="row justify-center items-center text-center q-my-md">
                   <div class="col-md-6 q-pa-md ">
@@ -23,15 +23,21 @@
                   </div>
                 </div>
               </div>
-  </q-page>
+
+              <InsurancePlans/>
+            </div>
 </template>
      
 <script>
      import { defineComponent } from 'vue'
      import apiService from '@/services/api-services.js';
+     import InsurancePlans from 'src/components/Insurance-Plans/insurance-plans.vue';
      
      export default defineComponent({
        name: 'InsuranceCentre',
+       components:{
+        InsurancePlans
+       },
        data(){
         return {
             insuranceCentreInfo: null,
