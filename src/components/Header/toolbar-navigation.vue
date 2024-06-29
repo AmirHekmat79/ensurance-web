@@ -6,19 +6,19 @@
       <q-btn
         @click="toggleSidebar"
         flat
-        class="text-white hambergur-menu q-mx-lg"
+        class="text-white hambergur-menu"
         icon="menu"
       ></q-btn>
-      <div class="login-btn-group">
+      <div class="login-btn-group justify-center items-center">
         <q-btn class="register-btn"><a>ثبت نام</a></q-btn>
         <q-btn class="entrance-btn"><a> ورود</a></q-btn>
       </div>
       <q-space />
-      <q-toolbar-title class="text-white title-container">
+      <q-toolbar-title class="text-white title-container ">
         <h6 class="title">کارگزاری راه سبز توسعه امید</h6>
       </q-toolbar-title>
     </div>
-    <div dir="rtl" class="row justify-start items-center q-mr-auto">
+    <div class="row justify-start items-center q-ml-auto">
       <ul
         v-if="!sidebarVisible"
         class="navLink-container row justify-start items-center"
@@ -45,35 +45,6 @@
           <q-btn flat class="navLink-btn"><a href="#"> تماس با ما</a></q-btn>
         </li>
       </ul>
-      <!-- <ul v-else class="sidebar-navLink-container">
-        
-        <div
-          class="column justify-center items-center sidebar-login-btn-container"
-        >
-          <q-btn class="register-btn"><a>ثبت نام</a></q-btn>
-          <q-btn class="entrance-btn"><a> ورود</a></q-btn>
-        </div>
-        <li class="sidebar-navLink-item">
-          <q-btn flat class="navLink-btn"><a href="#">خانه</a></q-btn>
-        </li>
-        <li class="sidebar-navLink-item">
-          <q-btn flat class="navLink-btn"
-            ><a href="#">محصولات و خدمات</a></q-btn
-          >
-        </li>
-        <li class="sidebar-navLink-item">
-          <q-btn flat class="navLink-btn"><a href="#">مجله بیمه ای</a></q-btn>
-        </li>
-        <li class="sidebar-navLink-item">
-          <q-btn flat class="navLink-btn"><a href="#">پیگیری</a></q-btn>
-        </li>
-        <li class="sidebar-navLink-item">
-          <q-btn flat class="navLink-btn"><a href="#">درباره ما</a></q-btn>
-        </li>
-        <li class="sidebar-navLink-item">
-          <q-btn flat class="navLink-btn"><a href="#">تماس با ما</a></q-btn>
-        </li>
-      </ul> -->
 
       <q-drawer
         v-else
@@ -88,10 +59,10 @@
         <div
           class="column justify-center items-center sidebar-login-btn-container"
         >
-          <q-btn align="between" class="register-btn btn-fixed-width q-pa-md"
+          <q-btn align="between" class="register-btn btn-fixed-width"
             ><a>ثبت نام</a></q-btn
           >
-          <q-btn align="between" class="entrance-btn btn-fixed-width q-pa-md"
+          <q-btn align="between" class="entrance-btn btn-fixed-width"
             ><a>ورود</a></q-btn
           >
         </div>
@@ -146,11 +117,13 @@ export default defineComponent({
 }
 .title {
   font-size: 17px;
-  margin-left: 20rem;
+  padding: 0px 30px;
+  white-space:nowrap;
+  min-width: 100%;
 }
 
 .entrance-btn {
-  padding: 8px 50px !important;
+  /* padding: 8px 50px !important; */
   background: #3c9e75 !important;
   color: #fff;
   text-align: center;
@@ -158,9 +131,11 @@ export default defineComponent({
   margin-left: 20px !important;
   font-size: 14px;
   font-weight: 500;
+  width: 130px;
 }
 .register-btn {
-  padding: 8px 25px !important;
+  width: 100px;
+  margin-right: 10px;
   background: #a8cf8c !important;
   color: #fff;
   text-align: center;
@@ -168,16 +143,7 @@ export default defineComponent({
   font-size: 14px;
   font-weight: 500;
 }
-/* .consult-btn{
-  padding: 8px 25px  !important;
-  background: #f2c037 !important;
-  margin-left: 20px !important;
-  color : #fff;
-  font-size : 14px;
-  font-weight: 500;
-  text-align: center;
-  cursor: pointer;
-} */
+
 .navLink-container {
   list-style-type: none;
 }
@@ -211,10 +177,32 @@ export default defineComponent({
 .sidebar-navLink-item {
   margin: 5px 10px;
 }
-.sidebar-login-btn-container .register-btn,
-.entrance-btn {
+.sidebar-login-btn-container .entrance-btn {
   max-width: 100%; /* Make the buttons fill the full width */
-  padding: 8px 35px !important;
+  padding: 8px 30px !important;
+  background: #3c9e75 !important;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.sidebar-login-btn-container .register-btn {
+  max-width: 100%; /* Make the buttons fill the full width */
+  padding: 8px 50px !important;
+  background: #3c9e75 !important;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.sidebar-login-btn-container .register-btn {
+  max-width: 100%; /* Make the buttons fill the full width */
+  padding: 8px 30px !important;
   background: #3c9e75 !important;
   color: #fff;
   text-align: center;
