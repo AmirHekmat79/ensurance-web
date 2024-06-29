@@ -4,7 +4,6 @@
       <BarNavigation/>
       <ToolbarNavigation/>
     </q-header>
-
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -20,7 +19,7 @@ export default defineComponent({
 
   components: {
     BarNavigation ,
-    ToolbarNavigation
+    ToolbarNavigation,
   },
 
   
