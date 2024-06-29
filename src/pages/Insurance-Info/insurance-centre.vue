@@ -11,17 +11,18 @@
                     </h6>
                   </div>
                   <div class="col-md-6 q-pa-md">
-                    <img src="https://media.easybimeh.com//Easybimeh/FileManager/InsuranceCentre/sabz/637447452444242558.jpg" style="border-radius: 15px; width: 400px;">
-                    <div class="row justify-center q-mx-auto items-center q-px-md bg-info" style="width:fit-content ; position: absolute; bottom: 188px;right: 15%;" >
-                      <q-btn flat ><q-img src="../../assets/back.png" width="20px"></q-img></q-btn> 
-                      <span class="text-white"> رشد مقرری بگیران بیمه بیکاری با کرونا</span>
-                      
+                    <div class="image-container">
+                      <img src="https://media.easybimeh.com//Easybimeh/FileManager/InsuranceCentre/sabz/637447452444242558.jpg" alt="Insurance Image">
+                      <div class="banner-details">
+                        <q-btn flat>
+                          <q-img src="../../assets/back.png" width="20px"></q-img>
+                        </q-btn> 
+                        <span class="text-white">رشد مقرری بگیران بیمه بیکاری با کرونا</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-    </div>
-  
-
+              </div>
   </q-page>
 </template>
      
@@ -34,8 +35,6 @@
        data(){
         return {
             insuranceCentreInfo: null,
-                   
-            
         }
        } ,
        mounted() {
@@ -60,10 +59,48 @@
   .insurance-info-container{
     /* height: 100vh; */
     width: 100%;
-   height: 500px;
+    height: 600px;
     border-bottom-left-radius: 20%;
     border-bottom-right-radius: 20%;
   }
+    .image-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+  }
+
+  .banner-details{
+   position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 0px 0px 15px 15px;
+    height: 50px;
+    background: linear-gradient(110.72deg, rgba(59, 139, 255, 0.4) 0%, rgba(56, 132, 242, 0.6) 7.1%, rgba(53, 125, 230, 0.867) 30.76%, rgba(50, 118, 217, 0.933) 72.17%, rgb(47, 111, 204) 60%);
+  }
+  .banner-details .q-btn {
+  margin-right: 10px;
+}
+
+.banner-details .text-white {
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .banner-details .text-white {
+    font-size: 12px;
+  }
+}
 </style>
      
      
