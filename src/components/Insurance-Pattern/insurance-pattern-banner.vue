@@ -5,7 +5,7 @@
             <q-img src="@/assets/steps-icon.svg" width="50px" ></q-img>
         </div> 
         <div class="q-my-md">
-            <img src="@/assets/mobile-banner.png" width="500px"/>
+            <img class="banner" src="@/assets/mobile-banner.png" width="500px"/>
         </div> 
     </div>
   </template>
@@ -23,6 +23,14 @@
   .total-container{
     margin: 70px !important;
   }
+  .banner{
+    display: none;
+  }
+  @media screen and (max-width: 600px){
+    .banner{
+      display: block;
+    }
+  }
   .banner-title-container{
 
        text-align: center;
@@ -33,7 +41,7 @@
         padding: 0 16px;
   }
   .banner-title{
-    font-size: 16px;
+    font-size: 20px;
   }
   </style>
        
