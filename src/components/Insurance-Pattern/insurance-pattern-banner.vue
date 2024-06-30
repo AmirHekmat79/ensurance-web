@@ -7,11 +7,11 @@
         <div class="q-my-md">
             <img class="banner" src="@/assets/mobile-banner.png" width="500px"/>
             <div class="row justify-around items-center banner-cards">
-              <q-card  v-for="(type, index) in types" :key="index" class="text-center  cards shadow-10 q-mx-md">
+              <q-card  v-for="(step, index) in steps" :key="index" class="text-center  cards shadow-10 q-mx-md q-pa-md">
                 <q-card-section class="column justify-between items-center flex-wrap">
                   <!-- <q-img :src="item.iconImage" width="50px"/> -->
-                  <q-img :src="type.Src" width="120px" ></q-img>
-                  <p class="insurance-name">{{ type.name }}</p>
+                  <q-img :src="step.Src" width="120px" class="fit" ></q-img>
+                  <p class="insurance-title">{{ step.name }}</p>
                 </q-card-section>
                
               </q-card>
@@ -33,7 +33,7 @@
        name: 'InsurancePatternBanner',
        data() {
            return {
-             types: [
+             steps: [
                { name: 'بیمه مورد نظرت رو انتخاب کن' ,
                  Src : step1
               
@@ -59,15 +59,15 @@
   <style scoped>
   .insurance-title{
     width: 100%;
-    margin-top: 35px;
     padding: 15px 10px;
     text-align: center;
+    color: #fcfcfc !important;
   }
   .cards{
     /* box-shadow: 6px 20px 40px -5px rgba(31, 34, 58, 0.2); */
     background: #ccdbda !important;
-    width: 145px;
-    height: 150px;
+    width: 245px;
+    height: 245px;
     margin: 10px;
     background-color: #fff;
     border-radius: 35px;

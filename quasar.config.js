@@ -38,7 +38,11 @@ module.exports = configure(function (/* ctx */) {
     css: [
       'app.css'
     ],
-
+    vite: {
+      cache: {
+        enabled: false
+      }
+    },
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
@@ -90,11 +94,15 @@ module.exports = configure(function (/* ctx */) {
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
-    devServer: {
-      // https: true
-      open: true // opens browser window automatically
-    },
 
+    devServer: {
+      open: true, // open browser window automatically
+      hot: true, // enable HMR (Hot Module Replacement)
+      liveReload: true, // enable live reload
+      watchOptions: {
+        ignored: /node_modules/ // ignore node_modules folder
+      }
+    },
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
     framework: {
       config: {},

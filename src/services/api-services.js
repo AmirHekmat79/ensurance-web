@@ -11,6 +11,9 @@ const apiService = {
     },
     getSuggestionFormPlans(subDomain){
         return  axios.get(`${BASE_URL}/InsurancePolicyPlan/SuggestionForm_Plans?subDomain=${subDomain}`);
+    },
+    getPolicyIntroduction(id){
+        return  axios.get(`${BASE_URL}/InsuranceCentre/PortalLandingPage?id=${id}`);
     }
     
 }
