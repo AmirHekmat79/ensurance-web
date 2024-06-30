@@ -54,7 +54,7 @@
     background-color: #e4e4e4;
     margin: 50px auto;
   }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 780px) {
   .insurance-types-container {
     width: 100%;
     position: absolute;
