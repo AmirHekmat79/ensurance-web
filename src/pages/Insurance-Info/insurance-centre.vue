@@ -15,7 +15,7 @@
                       <img src="https://media.easybimeh.com//Easybimeh/FileManager/InsuranceCentre/sabz/637447452444242558.jpg" alt="Insurance Image">
                       <div class="banner-details">
                         <q-btn flat>
-                          <q-img src="../../assets/back.png" width="20px"></q-img>
+                          <q-img src="@/assets/back.png" width="20px"></q-img>
                         </q-btn> 
                         <span class="text-white">رشد مقرری بگیران بیمه بیکاری با کرونا</span>
                       </div>

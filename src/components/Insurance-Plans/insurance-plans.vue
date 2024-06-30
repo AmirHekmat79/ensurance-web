@@ -4,8 +4,8 @@
              <div class="row justify-around items-center">
               <q-card  v-for="(item , index) in insurancePlans" :key="index" class="text-center  cards shadow-10 q-mx-md">
                 <q-card-section class="column justify-between items-center flex-wrap">
-                  <q-img :src="item.iconImage" width="50px"/>
-                  <span>{{ item.title}}</span>
+                  <q-img :src="item.iconImage" width="60px"/>
+                  <p class="insurance-title">{{ item.title}}</p>
                 </q-card-section>
                
               </q-card>
@@ -13,6 +13,7 @@
              </div>
            </section> 
     </div>
+    <div class="separator"></div>
   </template>
        
   <script>
@@ -45,7 +46,13 @@
      })
   </script>
   <style scoped>
- h6{
+    .separator{
+    width: 400px;
+    height: 1px;
+    background-color: #e4e4e4;
+    margin: 40px auto;
+  }
+.insurance-title{
   font-size: 12px;
     margin: 5px 0px 0px 0px;
     color: #000;
@@ -60,6 +67,9 @@
     border-radius: 35px;
     border: 2px solid #48bdd5;
     cursor: pointer;
+ }
+ .cards:hover{
+    background: #eee;
  }
   </style>
        
