@@ -27,6 +27,7 @@
                 <InsuranceTypes/>
                 <InsurancePlans/>
                 <InsuranceSuggestedPlans/>
+                <InsurancePatternBanner/>
                </div>
             </div>
 </template>
@@ -37,12 +38,14 @@
      import InsurancePlans from 'src/components/Insurance-Plans/insurance-plans.vue';
      import InsuranceTypes from 'src/components/Insurance-Types/insurance-types.vue';
      import InsuranceSuggestedPlans from 'src/components/Suggestion-Plans/insurance-suggested-plans.vue';
+     import InsurancePatternBanner from 'src/components/insurance-pattern/insurance-pattern-banner.vue';
      export default defineComponent({
        name: 'InsuranceCentre',
        components:{
         InsurancePlans ,
         InsuranceTypes ,
-        InsuranceSuggestedPlans
+        InsuranceSuggestedPlans ,
+        InsurancePatternBanner
        },
        data(){
         return {
