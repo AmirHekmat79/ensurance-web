@@ -1,11 +1,33 @@
 <template>
-  <div class="q-pa-md">
-   
+  <div class="q-pa-sm">
+    <q-carousel
+      v-model="slide"
+      transition-prev="slide-right"
+      transition-next="slide-left"
+      height="400px"
+      animated
+      navigation
+      padding
+      draggable
+      class="bg-red"
+    >
+      <q-carousel-slide
+        v-for="(item, index) in PoliciesIntroduction"
+        :key="index"
+        :name="style"
+        :img-src="item.metaMediaFileThumbnailUrl"
+      >
+        <div class="absolute-bottom custom-caption bg-transparent">
+          <div class="text-h5 text-dark text-center">{{ item.title }}</div>
+          <!-- <div>{{ item.description }}</div> -->
+        </div>
+      </q-carousel-slide>
+    </q-carousel>
   </div>
 </template>
        
   <script>
-     import {defineComponent} from 'vue'
+     import {defineComponent ,ref} from 'vue'
      import apiService from 'src/services/api-services';
        export default defineComponent({
        name: 'PolicyIntroduction',
@@ -16,6 +38,12 @@
             
         }
        } ,
+       setup(){
+         const slide = ref('style');
+         return {
+            slide
+         }
+       },
        mounted() {
         this.getPolicyIntroduction();
        },
@@ -24,7 +52,7 @@
             console.log('asdadadadada');
             apiService.getPolicyIntroduction('sabz')
             .then(response => {
-                this.PoliciesIntroduction = response.data.message;
+                this.PoliciesIntroduction = response.data.message?.summaryCards ;
                 console.log(this.PoliciesIntroduction);
             })
             .catch(error => {
