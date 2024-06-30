@@ -8,6 +8,9 @@ const apiService = {
     } ,
     getInsurancePlan(subDomain){
         return  axios.get(`${BASE_URL}/InsurancePolicyPlan/SpecialPlan?subDomain=${subDomain}`);
+    },
+    getSuggestionFormPlans(subDomain){
+        return  axios.get(`${BASE_URL}/InsurancePolicyPlan/SuggestionForm_Plans?subDomain=${subDomain}`);
     }
     
 }

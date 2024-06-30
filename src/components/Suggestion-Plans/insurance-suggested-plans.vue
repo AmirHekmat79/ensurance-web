@@ -2,9 +2,9 @@
     <div class="flex flex-center q-my-md">
            <section>
              <div class="row justify-around items-center">
-              <q-card  v-for="(item , index) in insurancePlans" :key="index" class="text-center  cards shadow-10 q-mx-md">
+              <q-card  v-for="(item , index) in SuggestionFormPlans && SuggestionFormPlans.slice(0, 2)" :key="index" class="text-center  cards shadow-10 q-mx-md">
                 <q-card-section class="column justify-between items-center flex-wrap">
-                  <q-img :src="item.iconImage" width="60px"/>
+                  <q-img :src="item.iconImage" width="40px"/>
                   <p class="insurance-title">{{ item.title}}</p>
                 </q-card-section>
                
@@ -13,8 +13,6 @@
              </div>
            </section> 
     </div>
-    <div class="separator"></div>
-    <p class="q-mt-md text-center">فرم های پیشنهاد الکترونیکی به تفکیک رشته</p>
   </template>
        
   <script>
@@ -22,22 +20,22 @@
        import apiService from '@/services/api-services.js';
      
        export default defineComponent({
-       name: 'InsurancePlans',
+       name: 'InsuranceSuggestedPlans',
        data(){
         return {
-            insurancePlans: null,
+            SuggestionFormPlans: null,
         }
        } ,
        mounted() {
-        this.getInsurancePlan();
+        this.getSuggestionFormPlans();
        },
        methods: {
-        getInsurancePlan() {
+        getSuggestionFormPlans() {
             console.log('asdadadadada');
-            apiService.getInsurancePlan('sabz')
+            apiService.getSuggestionFormPlans('sabz')
             .then(response => {
-                this.insurancePlans = response.data.message;
-                console.log(this.insurancePlans);
+                this.SuggestionFormPlans = response.data.message;
+                console.log(this.SuggestionFormPlans);
             })
             .catch(error => {
             console.error('Error fetching insurance centre info:', error);
@@ -54,10 +52,11 @@
     margin: 40px auto;
   }
 .insurance-title{
-  font-size: 12px;
+    font-size: 12px;
     margin: 5px 0px 0px 0px;
     color: #000;
     padding: 0px 5px;
+    line-height: 20px;
   
  }
  .cards{
@@ -66,7 +65,7 @@
     margin: 10px;
     background-color: #fff;
     border-radius: 35px;
-    border: 2px solid #48bdd5;
+    border: 2px solid #ffdaa9;
     cursor: pointer;
  }
  .cards:hover{

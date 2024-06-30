@@ -26,20 +26,23 @@
                <div class="column">
                 <InsuranceTypes/>
                 <InsurancePlans/>
+                <InsuranceSuggestedPlans/>
                </div>
             </div>
 </template>
      
 <script>
-     import { defineComponent } from 'vue'
+     import { defineComponent } from 'vue';
      import apiService from '@/services/api-services.js';
      import InsurancePlans from 'src/components/Insurance-Plans/insurance-plans.vue';
      import InsuranceTypes from 'src/components/Insurance-Types/insurance-types.vue';
+     import InsuranceSuggestedPlans from 'src/components/Suggestion-Plans/insurance-suggested-plans.vue';
      export default defineComponent({
        name: 'InsuranceCentre',
        components:{
         InsurancePlans ,
-        InsuranceTypes
+        InsuranceTypes ,
+        InsuranceSuggestedPlans
        },
        data(){
         return {

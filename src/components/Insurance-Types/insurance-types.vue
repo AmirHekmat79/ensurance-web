@@ -58,7 +58,7 @@
   .insurance-types-container {
     width: 100%;
     position: absolute;
-   transform: translate(-50px , -50px);
+   transform: translate(-40px , -50px);
     display: flex;
     justify-content: center;
     text-align: center;
