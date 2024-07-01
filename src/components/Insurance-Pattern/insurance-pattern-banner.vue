@@ -59,9 +59,10 @@
   <style scoped>
   .insurance-title{
     width: 100%;
-    padding: 15px 10px;
+    padding: 0px 15px 10px;
     text-align: center;
     color: #fcfcfc !important;
+    margin: 35px auto;
   }
   .cards{
     /* box-shadow: 6px 20px 40px -5px rgba(31, 34, 58, 0.2); */

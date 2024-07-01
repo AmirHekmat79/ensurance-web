@@ -1,49 +1,75 @@
 <template>
-  <div class="q-pa-sm">
+<div class="q-pa-md">
+   <div class="row justify-center items-center text-center q-gutter-md">
+    <h2 class="introduction-title">معرفی بیمه نامه‌ها</h2>
+    <q-img src="@/assets/introduction.svg" width="50px"></q-img>
+   </div>
     <q-carousel
-      v-model="slide"
+      v-model="currentSlide"
       transition-prev="slide-right"
       transition-next="slide-left"
-      height="400px"
+      height="100%"
+      infinite
       animated
-      navigation
       padding
+      :autoplay="autoplay"
+      swipeable
       draggable
-      class="bg-red"
+     
+      
     >
-      <q-carousel-slide
-        v-for="(item, index) in PoliciesIntroduction"
+      <q-carousel-slide 
+      
+        v-for="(slide, index) in PoliciesIntroduction && Math.ceil(PoliciesIntroduction.length / 2)"
         :key="index"
-        :name="style"
-        :img-src="item.metaMediaFileThumbnailUrl"
+        :name="index.toString()"
       >
-        <div class="absolute-bottom custom-caption bg-transparent">
-          <div class="text-h5 text-dark text-center">{{ item.title }}</div>
-          <!-- <div>{{ item.description }}</div> -->
+      <div class="row justify-center items-center q-mx-auto q-gutter-lg">
+        <div class="col-md-3 col-xs-8" 
+         v-for="(item, itemIndex) in PoliciesIntroduction.slice(
+              index * 3,
+              index * 3 + 3
+            )"
+            :key="itemIndex"
+        >
+          <q-card class="my-card bg-white shadow text-white">
+          <q-card-section  dir="rtl" class="column justify-center items-center card-section">
+            <q-img :src="item.metaMediaFileUrl" class="card-img" />
+            <div class="text-h6 title textColor q-mb-md">{{ item.title }}</div>
+            <p class="textColor text-right overflow-hidden">{{ item.summary }}</p>
+          </q-card-section>
+          <q-separator light />
+          <q-card-actions class="row justify-between items-center">
+            <q-btn flat>
+              <q-img src="@/assets/back.png" width="20px"></q-img>
+            </q-btn> 
+            <span class="text-dark">شرایط بیمه نامه</span>
+          </q-card-actions>
+         </q-card>
+        </div>
         </div>
       </q-carousel-slide>
     </q-carousel>
+   
   </div>
 </template>
        
   <script>
-     import {defineComponent ,ref} from 'vue'
+     import {defineComponent  } from 'vue'
      import apiService from 'src/services/api-services';
        export default defineComponent({
        name: 'PolicyIntroduction',
-      
+       
        data(){
         return {
             PoliciesIntroduction: null,
+            currentSlide: '0',
+            autoplay: true,
+           autoplayInterval: 3000, 
             
         }
        } ,
-       setup(){
-         const slide = ref('style');
-         return {
-            slide
-         }
-       },
+      
        mounted() {
         this.getPolicyIntroduction();
        },
@@ -59,18 +85,37 @@
             console.error('Error fetching insurance centre info:', error);
             });
         },
-             
+         
+     
         },
+      
   
      })
   </script>
   <style scoped>
-    .separator{
-    width: 400px;
-    height: 1px;
-    background-color: #e4e4e4;
-    margin: 40px auto;
+  .title{
+    font-size: 18.7;
+    margin-top: 60px;
   }
+  .introduction-title{
+    font-size: 26px;
+  }
+
+.card-img{
+  border-radius: 5px;
+  width: 100%;
+  height: 200px;
+  border-style: none;
+
+}
+.card-section {
+  padding: 20px;
+ min-height: 200px; 
+
+}
+.textColor {
+  color : #3b1717 !important;
+}
 .insurance-title{
   font-size: 12px;
     margin: 5px 0px 0px 0px;
@@ -79,8 +124,8 @@
   
  }
  .cards{
-    width: 145px;
-    height: 150px;
+    width: 396px;
+    height: 561px;
     margin: 10px;
     background-color: #fff;
     border-radius: 35px;
