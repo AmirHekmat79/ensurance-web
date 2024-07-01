@@ -2,7 +2,7 @@
   <div class="q-pa-md">
     <div class="row justify-center items-center text-center q-gutter-md">
       <h2 class="introduction-title">معرفی بیمه‌نامه‌ها</h2>
-      <q-img src="@/assets/introduction.svg" width="50px"></q-img>
+      <q-img src="@/assets/introduction.svg" width="40px"></q-img>
     </div>
     <q-carousel
       v-model="currentSlide"
@@ -103,7 +103,7 @@ export default defineComponent({
   margin-top: 60px;
 }
 .introduction-title {
-  font-size: 26px;
+  font-size: 32px;
 }
 
 .card-img {
