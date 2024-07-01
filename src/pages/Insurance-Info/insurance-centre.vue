@@ -30,6 +30,7 @@
                 <InsurancePatternBanner/>
                 <PolicyIntroduction/>
                 <InsuranceNews/>
+                <InsuranceRevivalForm/>
                </div>
             </div>
 </template>
@@ -43,6 +44,7 @@
      import InsurancePatternBanner from 'src/components/Insurance-Pattern/insurance-pattern-banner.vue';
      import PolicyIntroduction from 'src/components/Policy-Introduction/policy-introduction.vue';
      import InsuranceNews from 'src/components/Insurance-News/insurance-news.vue';
+     import InsuranceRevivalForm from 'src/components/Insurance-Revival/insurance-revival-form.vue';
      export default defineComponent({
        name: 'InsuranceCentre',
        components:{
@@ -51,7 +53,8 @@
         InsuranceSuggestedPlans ,
         InsurancePatternBanner ,
         PolicyIntroduction,
-        InsuranceNews
+        InsuranceNews,
+        InsuranceRevivalForm
        },
        data(){
         return {
