@@ -93,7 +93,7 @@
       </div>
    </div> 
   </q-form>
-  <div class="row justify-center items-center">
+  <div class="row justify-end items-center">
     <div class="col-lg-3 col-md-4 col-xs-6">
     <q-btn class="insurance-revival-btn">یادآوری کن</q-btn>
   </div>
