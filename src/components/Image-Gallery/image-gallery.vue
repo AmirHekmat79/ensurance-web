@@ -8,7 +8,7 @@
         v-model="currentSlide"
         transition-prev="slide-right"
         transition-next="slide-left"
-        height="300px"
+        height="400px"
         infinite
         animation="fade"
         padding
@@ -23,8 +23,9 @@
           :key="index"
           :name="index.toString()"
         >
-          <div class="row justify-center items-center q-mx-auto q-gutter-md">
+          <div class="row justify-center items-center q-mx-auto q-gutter-md" >
             <div
+            
               class="col-auto"
               v-for="(item, itemIndex) in InsuranceImageAlbums?.slice(
                  index * 3,
