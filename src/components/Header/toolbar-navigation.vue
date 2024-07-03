@@ -24,7 +24,7 @@
         class="navLink-container row justify-start items-center"
       >
         <li class="navLink-item">
-          <q-btn flat class="navLink-btn"><a href="#">خانه</a></q-btn>
+          <q-btn flat class="navLink-btn"><a href="/">خانه</a></q-btn>
         </li>
         <li class="navLink-item">
           <q-btn flat class="navLink-btn"
@@ -32,17 +32,17 @@
           >
         </li>
         <li class="navLink-item">
-          <q-btn flat class="navLink-btn"><a href="#">مجله بیمه ای</a></q-btn>
+          <q-btn flat class="navLink-btn"><a href="https://sabz.easybimeh.com/blog">مجله بیمه ای</a></q-btn>
         </li>
         <li class="navLink-item">
           <q-btn flat class="navLink-btn"><a href="#">پیگیری</a></q-btn>
         </li>
 
         <li class="navLink-item">
-          <q-btn flat class="navLink-btn"><a href="#">درباره ما</a></q-btn>
+          <q-btn flat class="navLink-btn"><a href="https://sabz.easybimeh.com/about">درباره ما</a></q-btn>
         </li>
         <li class="navLink-item">
-          <q-btn flat class="navLink-btn"><a href="#"> تماس با ما</a></q-btn>
+          <q-btn flat class="navLink-btn"><a href="https://sabz.easybimeh.com/contactUs"> تماس با ما</a></q-btn>
         </li>
       </ul>
 
@@ -59,10 +59,10 @@
         <div
           class="column justify-center items-center sidebar-login-btn-container"
         >
-          <q-btn align="between" class="register-btn btn-fixed-width"
+          <q-btn  class="register-btn btn-fixed-width"
             ><a>ثبت نام</a></q-btn
           >
-          <q-btn align="between" class="entrance-btn btn-fixed-width"
+          <q-btn  class="entrance-btn btn-fixed-width"
             ><a>ورود</a></q-btn
           >
         </div>
@@ -119,7 +119,11 @@ export default defineComponent({
   font-size: 17px;
   padding: 0px 30px;
   white-space:nowrap;
-  min-width: 100%;
+  min-width: 0px;
+  margin: 11px 0px;
+  font-weight: 500;
+  line-height: 2rem;
+   letter-spacing: 0.0125em;
 }
 
 .entrance-btn {
@@ -247,5 +251,11 @@ export default defineComponent({
   .sidebar-navLink-container {
     display: block;
   }
+}
+.register-btn , .entrance-btn {
+  min-width:230px;
+  width: 60%;
+  text-align: center;
+  margin: 6px auto !important;
 }
 </style>

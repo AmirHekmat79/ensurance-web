@@ -52,15 +52,15 @@
   export default defineComponent({
     name: 'BarNavigation',
     setup() {
-    const showBar = ref(true)
+    const showBar = ref(true);
     const scrollThreshold = 100 ;
 
     const handleScroll = () => {
-      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop
-      showBar.value = scrollPosition < scrollThreshold
+      const scrollPosition =  document.documentElement.scrollTop;
+      showBar.value = scrollPosition < scrollThreshold;
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll);
 
     return {
       showBar
@@ -85,9 +85,14 @@
 .contact-container{
     padding-left: 130px;
 }
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 782px) {
     .contact-container{
         display: none;
+    }
+    .social-svg-container{
+        position: absolute;
+        text-align: center;
+        margin:20px auto !important;
     }
 }
 </style>

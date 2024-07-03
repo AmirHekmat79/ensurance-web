@@ -47,7 +47,7 @@
                 <q-card-section
                   class="row justify-center items-center card-section"
                 >
-                  <q-img :src="item.src" class="card-img" width="70px" height="70px"></q-img>
+                  <q-img :src="item.src" class="card-img" width="82px" height="82px"></q-img>
                 </q-card-section>
               </q-card>
             </div>
@@ -156,7 +156,7 @@
     font-size: 24px;
   }
   .cards {
-    width: 124px;
+    width: 100px;
     height: 100px;
     background: #ffff;
   }
@@ -166,11 +166,7 @@
       display: none;
     }
   }
-  @media screen and (max-width: 767px) {
-  .cards {
-    width: 100px;
-    height: 80px;
-  }
-}
+  
+
 
   </style>
