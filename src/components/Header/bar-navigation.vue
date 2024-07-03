@@ -1,5 +1,5 @@
 <template>
- <q-bar class="bar-bg text-info  q-py-lg">
+ <q-bar v-if="showBar" class="bar-bg text-info  q-py-lg">
    <div class="row justify-start items-center text-center">
     <div class="contact-container">
         <a class="cursor-pointer">
@@ -46,11 +46,26 @@
 </template>
   
 <script>
-  import { defineComponent } from 'vue'
+  import { defineComponent , ref } from 'vue'
   
   
   export default defineComponent({
     name: 'BarNavigation',
+    setup() {
+    const showBar = ref(true)
+    const scrollThreshold = 100 ;
+
+    const handleScroll = () => {
+      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop
+      showBar.value = scrollPosition < scrollThreshold
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return {
+      showBar
+    }
+  }
   
   })
 </script>

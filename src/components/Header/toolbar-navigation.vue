@@ -223,7 +223,7 @@ export default defineComponent({
   font-size: 14px;
 }
 
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 870px) {
   .navLink-container {
     display: none;
   }
