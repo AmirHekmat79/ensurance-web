@@ -251,11 +251,11 @@ export default defineComponent({
   .sidebar-navLink-container {
     display: block;
   }
-}
-.register-btn , .entrance-btn {
-  min-width:230px;
-  width: 60%;
-  text-align: center;
-  margin: 6px auto !important;
+  .register-btn , .entrance-btn {
+    min-width:230px;
+    width: 60%;
+    text-align: center;
+    margin: 6px auto !important;
+  }
 }
 </style>
