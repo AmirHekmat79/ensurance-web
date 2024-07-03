@@ -4,7 +4,6 @@
              <div class="row justify-around items-center ">
               <q-card  v-for="(type, index) in types" :key="index" class="text-center  cards shadow-10 q-mx-md">
                 <q-card-section class="column justify-between items-center flex-wrap">
-                  <!-- <q-img :src="item.iconImage" width="50px"/> -->
                   <q-img :src="type.Src" width="50px" ></q-img>
                   <p class="insurance-name">{{ type.name }}</p>
                 </q-card-section>
@@ -54,7 +53,7 @@
     background-color: #e4e4e4;
     margin: 50px auto;
   }
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 864px) {
   .insurance-types-container {
     width: 100%;
     position: absolute;
