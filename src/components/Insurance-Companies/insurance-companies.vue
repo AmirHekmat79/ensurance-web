@@ -7,10 +7,10 @@
         <q-btn
         flat
         round
-        color="gray-blue-7"
+           color="white"
         @click="prevSlide"
         :disable="currentSlide === '0'"
-         class="col-auto"
+         class="col-auto bg-dark q-px-sm"
       >
         <q-icon name="chevron_left" />
       </q-btn>
@@ -38,8 +38,8 @@
             <div
                 class="col-sm-4  col-xs-6 col-md-auto"
               v-for="(item, itemIndex) in InsuranceCompanies.slice(
-                 parseInt(currentSlide) * 4,
-                 (parseInt(currentSlide) * 4) + 4
+                 parseInt(currentSlide) * 6,
+                 (parseInt(currentSlide) * 6) + 6
               )"
               :key="itemIndex"
             >
@@ -57,10 +57,10 @@
       <q-btn
         flat
         round
-         color="gray-blue-7"
+        color="white"
         @click="nextSlide"
         :disable="currentSlide === (numSlides - 1).toString()"
-        class="col-auto"
+         class="col-auto bg-dark q-px-sm"
       >
         <q-icon name="chevron_right" />
       </q-btn>
@@ -82,7 +82,15 @@
   import asia from '@/assets/asia.png';
   import saman from '@/assets/saman.png';
   import moalem from '@/assets/moalem.png';
-  
+  import arman from '@/assets/arman.png';
+  import dayinsurance from '@/assets/dayinsurance.png';
+  import carafarin from '@/assets/carafarin.png';
+  import novin from '@/assets/novin.png';
+  import ourinsurance from '@/assets/ourinsurance.png';
+  import razi from '@/assets/razi.png';
+  import sina from '@/assets/sina.png';
+  import asmari from '@/assets/asmari.png';
+
   export default defineComponent({
     name: 'InsuranceCompanies',
     data() {
@@ -100,6 +108,13 @@
           { id: 10, src: asia },
           { id: 11, src: saman },
           { id: 12, src: moalem },
+          {id : 13 , src:  dayinsurance} ,
+           {id:14, src : carafarin},
+           {id:15 ,src : novin},
+            {id:16 , src : ourinsurance},
+          {id:17 ,src: razi},
+          {id:18 ,src: sina},
+            {id:19,src:asmari}
         ],
         currentSlide: '0',
         autoplay: true,
@@ -116,7 +131,7 @@
     },
   },
     mounted() {
-      this.numSlides = Math.ceil(this.InsuranceCompanies.length / 4);
+      this.numSlides = Math.ceil(this.InsuranceCompanies.length / 6);
     },
     watch: {
       currentSlide(newSlide) {
