@@ -15,7 +15,7 @@
       </div>
       <!-- <q-space /> -->
       <q-toolbar-title dir="rtl" class="text-white title-container">
-        <h6 class="title">کارگزاری راه سبز توسعه امید</h6>
+        <h6 class="title">{{ InsuranceHeaderInfo?.centreName }}</h6>
       </q-toolbar-title>
     </div>
     <div class="row justify-start items-center q-ml-auto">
@@ -23,7 +23,7 @@
         v-if="!sidebarVisible"
         class="navLink-container row justify-start items-center"
       >
-        <li class="navLink-item">
+        <li class="navLink-item"  >
           <q-btn flat class="navLink-btn"><a href="/">خانه</a></q-btn>
         </li>
         <li class="navLink-item">
@@ -44,6 +44,7 @@
         <li class="navLink-item">
           <q-btn flat class="navLink-btn"><a href="https://sabz.easybimeh.com/contactUs"> تماس با ما</a></q-btn>
         </li>
+        
       </ul>
 
       <q-drawer
@@ -66,15 +67,15 @@
             ><a>ورود</a></q-btn
           >
         </div>
-        <q-list class="q-mt-md">
-          <q-item v-for="item in sidebarItems" :key="item.label">
+        <q-list  class="q-mt-md">
+          <q-item v-for="(item,index) in InsuranceNavbarMenuItems" :key="index">
             <q-item-section class="item-section">
               <q-btn
                 flat
                 dense
                 class="navLink-btn"
-                :label="item.label"
-                :to="item.to"
+                :label="item.title"
+                :to="item.url"
               />
             </q-item-section>
           </q-item>
@@ -86,19 +87,48 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-
+import apiService from "src/services/api-services";
 export default defineComponent({
   name: "ToolbarNavigation",
+  
+  data() {
+      return {
+        InsuranceHeaderInfo: null,
+        InsuranceNavbarMenuItems: null,
+      };
+    },
+  
+    mounted() {
+      this.getPolicyIntroduction();
+      this.getMenuesItem();
+    },
+  
+    methods: {
+      getPolicyIntroduction() {
+        apiService
+          .getPolicyIntroduction('sabz')
+          .then((response) => {
+            this.InsuranceHeaderInfo = response.data.message?.insuranceCentrePortal;
+            
+          })
+          .catch((error) => {
+            console.error('Error fetching insurance centre info:', error);
+          });
+      },
+      getMenuesItem() {
+        apiService
+          .getMenuesItem('sabz')
+          .then((response) => {
+            this.InsuranceNavbarMenuItems = response.data.message;
+            
+          })
+          .catch((error) => {
+            console.error('Error fetching insurance centre info:', error);
+          });
+      },
+    },
   setup() {
     const sidebarVisible = ref(false);
-    const sidebarItems = [
-      { label: "خانه", to: "/" },
-      { label: "محصولات و خدمات"},
-      { label: "مجله بیمه ای"},
-      { label: "پیگیری" },
-      { label: "درباره ما"},
-      { label: "تماس با ما" },
-    ];
     function toggleSidebar() {
       sidebarVisible.value = !sidebarVisible.value;
     }
@@ -106,7 +136,6 @@ export default defineComponent({
     return {
       sidebarVisible,
       toggleSidebar,
-      sidebarItems,
     };
   },
 });

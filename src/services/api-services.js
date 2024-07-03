@@ -14,6 +14,9 @@ const apiService = {
     },
     getPolicyIntroduction(id){
         return  axios.get(`${BASE_URL}/InsuranceCentre/PortalLandingPage?id=${id}`);
+    } ,
+    getMenuesItem(subDomain){
+        return  axios.get(`${BASE_URL}/ComboData/InsuranceCentrePortalMenues?subDomain=${subDomain}`);
     }
     
 }
