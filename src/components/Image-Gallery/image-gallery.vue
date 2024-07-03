@@ -28,8 +28,8 @@
             
               class="col-auto"
               v-for="(item, itemIndex) in InsuranceImageAlbums?.slice(
-                 index * 3,
-                 Math.min((index + 1) * 3, InsuranceImageAlbums.length)
+                 index * 4,
+                 Math.min((index + 1) * 4, InsuranceImageAlbums.length)
               )"
               :key="itemIndex"
             >
@@ -73,7 +73,7 @@
           .getPolicyIntroduction('sabz')
           .then((response) => {
             this.InsuranceImageAlbums = response.data.message?.imageAlbums || [];
-            this.numSlides = Math.ceil(this.InsuranceImageAlbums.length / 3);
+            this.numSlides = Math.ceil(this.InsuranceImageAlbums.length / 4);
           })
           .catch((error) => {
             console.error('Error fetching insurance centre info:', error);

@@ -18,7 +18,7 @@
                 </div>
               </div>
         </div>
-       <div class="col-6">
+       <div class="col-md-6">
         <q-carousel
         v-model="currentSlide"
         transition-prev="slide-right"
@@ -44,12 +44,15 @@
 
             <div class="column justify-center items-center q-gutter-sm">
                 <div 
-                class="col-auto"
-                v-for="(item, itemIndex) in InsuranceVideoGalleries.slice(0,3)"
+                class="col-auto videos-container text-center"
+                v-for="(item, itemIndex) in InsuranceVideoGalleries?.slice(
+                    index * 3,
+                    Math.min((index + 1) * 3, InsuranceVideoGalleries.length)
+                )"
                 :key="itemIndex"
             >
-              <div class=" bg-white shadow text-white">
-                <div  class="row justify-center items-center card-section">
+              <div class=" text-center bg-white shadow text-white">
+                <div  class="column justify-center items-center card-section">
                     <video controls>
                         <source :src="item.metaMediaFileUrl" type="video/mp4">
                         Your browser does not support the video tag.
@@ -131,8 +134,8 @@
   }
   .expand-video {
     border-radius: 5px;
-    width: 656px;
-    height: 385px;
+    width: 646px;
+    height: 380px;
     background-position: center;
     background-size: cover;
     border-style: none;
@@ -142,10 +145,15 @@
   .video-desktop{
         display: block;
     } 
- @media screen and (max-width : 716px){
+ @media screen and (max-width : 900px){
     .video-desktop{
         display: none;
     } 
+    .videos-container{
+      margin: auto !important;
+      text-align: center;
+      width: 100%;
+    }
  }
 
   </style>

@@ -1,28 +1,28 @@
 <template>
-    <div class="q-pa-md">
-      <div class="row justify-around items-center text-center q-gutter-md">
-        <h3 class="company-section-title">شرکت های بیمه</h3>
-      </div>
+  <div class="q-pa-sm Companies-Container">
+    <div class="row justify-around items-center text-center q-gutter-md">
+      <h3 class="company-section-title">شرکت های بیمه</h3>
+    </div>
     <div class="row items-center justify-center q-mx-auto q-gutter-md">
-        <q-btn
+      <q-btn
         flat
         round
-           color="white"
+        color="white"
         @click="prevSlide"
         :disable="currentSlide === '0'"
-         class="col-auto bg-dark q-px-sm"
+        class="col-auto bg-dark q-px-sm navigation-btns q-ml-auto"
       >
         <q-icon name="chevron_left" />
       </q-btn>
       <q-carousel
-      class="cursor-pointer"
+        class="cursor-pointer q-mx-auto Carousel"
         v-model="currentSlide"
         transition-prev="slide-right"
-        height="300px"
+        height="400px"
+        width="100%"
         infinite
         animation="fade"
         padding
-        style="overflow: hidden;"
         :autoplay="autoplay"
         :autoplay-interval="autoplayInterval"
         :autoplay-progress-bar="false"
@@ -34,12 +34,12 @@
           :key="index"
           :name="index.toString()"
         >
-          <div class="row  justify-around  items-center q-gutter-lg">
+          <div class="row justify-around items-center q-gutter-sm">
             <div
-                class="col-sm-4  col-xs-6 col-md-auto"
+              class="col-4 col-sm-4 col-md-2"
               v-for="(item, itemIndex) in InsuranceCompanies.slice(
-                 parseInt(currentSlide) * 6,
-                 (parseInt(currentSlide) * 6) + 6
+                parseInt(currentSlide) * 5,
+                (parseInt(currentSlide) * 5) + 5
               )"
               :key="itemIndex"
             >
@@ -47,7 +47,7 @@
                 <q-card-section
                   class="row justify-center items-center card-section"
                 >
-                  <q-img :src="item.src" class="card-img" width="85px" height="85px"></q-img>
+                  <q-img :src="item.src" class="card-img" width="70px" height="70px"></q-img>
                 </q-card-section>
               </q-card>
             </div>
@@ -60,13 +60,13 @@
         color="white"
         @click="nextSlide"
         :disable="currentSlide === (numSlides - 1).toString()"
-         class="col-auto bg-dark q-px-sm"
+        class="col-auto bg-dark q-px-sm navigation-btns q-mr-auto"
       >
         <q-icon name="chevron_right" />
       </q-btn>
     </div>
-    </div>
-  </template>
+  </div>
+</template>
   
   <script>
   import { defineComponent } from 'vue';
@@ -114,7 +114,8 @@
             {id:16 , src : ourinsurance},
           {id:17 ,src: razi},
           {id:18 ,src: sina},
-            {id:19,src:asmari}
+            {id:19,src:asmari},
+            {id:19,src:arman}
         ],
         currentSlide: '0',
         autoplay: true,
@@ -131,7 +132,7 @@
     },
   },
     mounted() {
-      this.numSlides = Math.ceil(this.InsuranceCompanies.length / 6);
+      this.numSlides = Math.ceil(this.InsuranceCompanies.length / 5);
     },
     watch: {
       currentSlide(newSlide) {
@@ -144,6 +145,13 @@
   </script>
   
   <style scoped>
+  .Carousel{
+    overflow: visible;
+  }
+  .Companies-Container{
+    max-width: 100%;
+    overflow-x: hidden;
+  }
   .company-section-title {
     font-size: 24px;
   }
@@ -152,4 +160,17 @@
     height: 100px;
     background: #ffff;
   }
+
+  @media screen and (max-width: 1020px) {
+    .navigation-btns{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 767px) {
+  .cards {
+    width: 100px;
+    height: 80px;
+  }
+}
+
   </style>
