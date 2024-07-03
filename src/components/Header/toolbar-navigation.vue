@@ -1,6 +1,6 @@
 <template>
   <q-toolbar
-    class="text-primary shadow-6 column justify-start items-center q-py-md"
+    class="text-primary shadow-6 column justify-between items-center q-py-md"
   >
     <div class="row justify-between items-center">
       <q-btn
@@ -9,12 +9,12 @@
         class="text-white hambergur-menu"
         icon="menu"
       ></q-btn>
-      <div class="login-btn-group justify-center items-center">
+      <div class="login-btn-group justify-between items-center">
         <q-btn class="register-btn"><a>ثبت نام</a></q-btn>
         <q-btn class="entrance-btn"><a> ورود</a></q-btn>
       </div>
-      <q-space />
-      <q-toolbar-title class="text-white title-container ">
+      <!-- <q-space /> -->
+      <q-toolbar-title dir="rtl" class="text-white title-container">
         <h6 class="title">کارگزاری راه سبز توسعه امید</h6>
       </q-toolbar-title>
     </div>
@@ -93,11 +93,11 @@ export default defineComponent({
     const sidebarVisible = ref(false);
     const sidebarItems = [
       { label: "خانه", to: "/" },
-      { label: "محصولات و خدمات", to: "/products" },
-      { label: "مجله بیمه ای", to: "/magazine" },
-      { label: "پیگیری", to: "/tracking" },
-      { label: "درباره ما", to: "/about" },
-      { label: "تماس با ما", to: "/contact" },
+      { label: "محصولات و خدمات"},
+      { label: "مجله بیمه ای"},
+      { label: "پیگیری" },
+      { label: "درباره ما"},
+      { label: "تماس با ما" },
     ];
     function toggleSidebar() {
       sidebarVisible.value = !sidebarVisible.value;
@@ -117,13 +117,11 @@ export default defineComponent({
 }
 .title {
   font-size: 17px;
-  padding: 0px 30px;
-  white-space:nowrap;
-  min-width: 0px;
-  margin: 11px 0px;
+  white-space:nowrap; 
+  width:100%;
+  margin-left: auto;
   font-weight: 500;
-  line-height: 2rem;
-   letter-spacing: 0.0125em;
+  
 }
 
 .entrance-btn {
@@ -193,7 +191,7 @@ export default defineComponent({
   font-weight: 500;
 }
 .sidebar-login-btn-container .register-btn {
-  max-width: 100%; /* Make the buttons fill the full width */
+  /* Make the buttons fill the full width */
   padding: 8px 50px !important;
   background: #3c9e75 !important;
   color: #fff;
@@ -204,17 +202,7 @@ export default defineComponent({
   font-size: 14px;
   font-weight: 500;
 }
-.sidebar-login-btn-container .register-btn {
-  max-width: 100%; /* Make the buttons fill the full width */
-  padding: 8px 30px !important;
-  background: #3c9e75 !important;
-  color: #fff;
-  text-align: center;
-  cursor: pointer;
-  margin-top: 5px;
-  font-size: 14px;
-  font-weight: 500;
-}
+
 .sidebar-navLink-item a {
   text-decoration: none;
   color: #fff;
@@ -237,7 +225,7 @@ export default defineComponent({
   }
 
   .title-container {
-    padding: 0px;
+    margin-left: auto !important;
   }
 
   .title {
@@ -246,6 +234,7 @@ export default defineComponent({
 
   .hambergur-menu {
     display: block;
+    margin-left: 10px;
   }
 
   .sidebar-navLink-container {
@@ -257,5 +246,13 @@ export default defineComponent({
     text-align: center;
     margin: 6px auto !important;
   }
+}
+@media only screen and (max-width: 727px) {
+
+  .hambergur-menu {
+    display: block;
+    margin-left: 165px;
+  }
+
 }
 </style>
