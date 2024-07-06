@@ -1,12 +1,12 @@
 <template>
   <q-toolbar class="text-primary shadow-6 column justify-start items-center q-py-md">
-    <div class="row justify-center items-center">
+    <div class="row justify-between items-center">
       <q-btn @click="toggleSidebar" flat class="text-white hambergur-menu" icon="menu"></q-btn>
-      <div class="login-btn-group justify-between items-center">
+      <div class="login-btn-group justify-between items-center ">
         <q-btn class="register-btn"><a>ثبت نام</a></q-btn>
         <q-btn class="entrance-btn"><a>ورود</a></q-btn>
       </div>
-      <q-toolbar-title dir="rtl" class="text-white title-container">
+      <q-toolbar-title  class="text-white title-container  q-ml-auto">
         <h6 class="title">{{ InsuranceHeaderInfo?.centreName }}</h6>
       </q-toolbar-title>
     </div>
@@ -25,10 +25,8 @@
           <q-btn class="entrance-btn btn-fixed-width"><a>ورود</a></q-btn>
         </div>
         <q-list class="q-mt-md">
-          <q-item v-for="(item, index) in InsuranceNavbarMenuItems" :key="index">
-            <q-item-section class="item-section">
-              <q-btn flat dense class="navLink-btn" :label="item.title" :to="item.url" />
-            </q-item-section>
+          <q-item v-for="(item, index) in sortedMenuItems.reverse()"  :key="index"   class="navLink-item">
+            <submenu class="navLink-btn" :isSubMenu="hasChildItems(item.id)" :menus="getChildItems(item.id)" :menu="item" :allMenu = "InsuranceNavbarMenuItems" isFirst/>
           </q-item>
         </q-list>
       </q-drawer>
@@ -110,7 +108,8 @@ export default defineComponent({
 </script>
 <style scoped>
 .title-container {
-  padding: 0px 280px;
+  margin-left : 440px !important;
+  text-align: right !important;
 }
 .title {
   font-size: 17px;
@@ -120,7 +119,9 @@ export default defineComponent({
   font-weight: 500;
   
 }
-
+*{
+  padding: 0 !important;
+}
 .entrance-btn {
   /* padding: 8px 50px !important; */
   background: #3c9e75 !important;
@@ -203,24 +204,21 @@ export default defineComponent({
   color: #fff;
   cursor: pointer;
 }
-.item-section {
-  margin-left: 50px !important;
-}
+
 .sidebar-navLink-btn {
   font-size: 14px;
 }
 
-@media only screen and (max-width: 870px) {
+@media only screen and (max-width: 990px) {
   .navLink-container {
     display: none;
   }
-
+  .title-container {
+    margin-left: 300px !important;
+  text-align: right !important;
+}
   .login-btn-group {
     display: none;
-  }
-
-  .title-container {
-    margin-left: auto !important;
   }
 
   .title {
@@ -246,7 +244,10 @@ export default defineComponent({
 
   .hambergur-menu {
     display: block;
-    margin-left: 165px;
+    /* margin-left: 65px; */
+  }
+  .title-container{
+    margin-left: 200px !important;
   }
 
 }

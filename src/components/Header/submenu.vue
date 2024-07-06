@@ -1,12 +1,12 @@
 <template>
     <div class="q-gutter-md text-center row justify-center q-mx-auto items-center">
-  <q-btn v-if="!isSubMenu" flat  :class="[isFirst ? 'text-white' : 'text-dark']"  :label="menu.title" :to="menu.url"> </q-btn>
+  <q-btn v-if="!isSubMenu" flat   :class="[isFirst ? 'Light' : 'Dark']"  :label="menu.title" :to="menu.url"> </q-btn>
 <div v-else>
-    <q-btn v-if="isFirst"  flat class="text-white" :label="menu.title">
+    <q-btn v-if="isFirst"  flat :class="[isFirst ? 'Light' : 'Dark']" :label="menu.title">
      <q-item-section side>
-       <q-icon color="white"  name="keyboard_arrow_down"  />
+       <q-icon :color="isFirst ? 'black' : bgWhite"  name="keyboard_arrow_down"  />
      </q-item-section>
-        <q-menu dir="rtl" class="bg-gray-blue-8" anchor="bottom left" self="top left">
+        <q-menu dir="rtl"  anchor="bottom left" self="top left">
           <q-list>
             <q-item v-for="subMenu in menus" flat clickable  :key="subMenu.id" class="linkItems text-dark">
               <submenu   :isSubMenu="computeIsSubMenu(subMenu.id)" :menus=computeMenus(subMenu.id) :menu="computeMenu(subMenu.id)" :allMenu = "allMenu" />
@@ -19,9 +19,9 @@
 </q-btn>
   <q-btn v-else  flat class="text-dark" :label="menu.title">
      <q-item-section side>
-       <q-icon color="black"  name="keyboard_arrow_left" />
+       <q-icon :color="isFirst ? Dark : Light"  name="keyboard_arrow_left" />
      </q-item-section>
-        <q-menu dir="rtl" anchor="top start" self="top end" class="bg-gray-blue-8">
+        <q-menu dir="rtl" anchor="top start" self="top end">
           <q-list>
             <q-item flat v-for="subMenu in menus" dense clickable  :key="subMenu.id" class="linkItems text-dark">
               <submenu   :isSubMenu="computeIsSubMenu(subMenu.id)" :menus=computeMenus(subMenu.id) :menu="computeMenu(subMenu.id)" :allMenu = "allMenu" />
@@ -39,9 +39,11 @@
   import { defineComponent, ref } from "vue";
   export default defineComponent({
     name: "ToolbarNavigation",
-    mounted(){
-        console.log(36,"sinna",this.isSubMenu,this.menu)    
-    },  
+    data(){
+      return {
+        bgWhite : 'white',
+      }
+    },
     props:{
         isSubMenu : Boolean,
         menus : [Object],
@@ -70,7 +72,7 @@
   <style scoped>
   .linkItems{
     border: none !important;
-   background-color: transparent !important;
+   /* background-color: transparent !important; */
     max-width: 100%;
     cursor: pointer;
     font-size: 14px;
@@ -80,9 +82,18 @@
     justify-content: start;
     /* margin-right: auto !important; */
   }
- .separator{
-    width: 60px;
-    height: 40px;
- }
+  .Light{
+    color : white !important;
+  }
+  .Dark {
+    color: black !important;
+  }
+  @media only screen and (max-width: 990px) {
+    .Light , .Dark{
+    color : black !important;
+  }
+  
+}
+
   </style>
   
