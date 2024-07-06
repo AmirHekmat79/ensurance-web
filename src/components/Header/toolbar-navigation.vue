@@ -12,7 +12,7 @@
     </div>
     <div class="row justify-start items-center q-ml-auto">
       <q-list v-if="!sidebarVisible" class="navLink-container row justify-start items-center">
-          <q-item v-for="(item, index) in InsuranceNavbarMenuItems.filter(item => item.parentId == null)"  :key="index"   class="navLink-item">
+          <q-item v-for="(item, index) in sortedMenuItems"  :key="index"   class="navLink-item">
             <submenu class="navLink-btn" :isSubMenu="hasChildItems(item.id)" :menus="getChildItems(item.id)" :menu="item" :allMenu = "InsuranceNavbarMenuItems" isFirst/>
           </q-item>
           
@@ -75,7 +75,7 @@ export default defineComponent({
           .getMenuesItem('sabz')
           .then((response) => {
             this.InsuranceNavbarMenuItems = response.data.message;
-            console.log(79,this.InsuranceNavbarMenuItems.some(item=>item.parentId==null))
+
           })
           .catch((error) => {
             console.error('Error fetching insurance centre info:', error);
@@ -86,10 +86,15 @@ export default defineComponent({
         
       } ,
       getChildItems(itemId){
-        console.log(89,itemId,this.InsuranceNavbarMenuItems.filter(item=> item.parentId == itemId))
         return this.InsuranceNavbarMenuItems.filter((item) => item.parentId == itemId)
       }
     },
+    computed: {
+      sortedMenuItems() {
+      return this.InsuranceNavbarMenuItems.filter(item => item.parentId == null).sort((a, b) => b.order - a.order)
+    
+    }
+},
   setup() {
     const sidebarVisible = ref(false);
     function toggleSidebar() {
