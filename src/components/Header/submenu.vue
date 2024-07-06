@@ -1,8 +1,8 @@
 <template>
     <div class="q-gutter-md text-center row justify-center q-mx-auto items-center">
-  <q-btn v-if="!isSubMenu" flat   :class="[isFirst ? 'Light' : 'Dark']"  :label="menu.title" :to="menu.url"> </q-btn>
+  <q-btn v-if="!isSubMenu" flat   :class="[isFirst ? 'Light' : 'Dark']"  :label="menu.title" :to="menu.url?.url"> </q-btn>
 <div v-else>
-    <q-btn v-if="isFirst"  flat :class="[isFirst ? 'Light' : 'Dark']" :label="menu.title">
+    <q-btn v-if="isFirst"  flat :class="[isFirst ? 'Light' : 'Dark']" :label="menu.title" :to="menu.url?.url">
      <q-item-section side>
        <q-icon :color="isFirst ? 'black' : bgWhite"  name="keyboard_arrow_down"  />
      </q-item-section>
