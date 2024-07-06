@@ -1,175 +1,33 @@
 <template>
-  <q-toolbar
-    class="text-primary shadow-6 column justify-between items-center q-py-md"
-  >
-    <div class="row justify-between items-center">
-      <q-btn
-        @click="toggleSidebar"
-        flat
-        class="text-white hambergur-menu"
-        icon="menu"
-      ></q-btn>
+  <q-toolbar class="text-primary shadow-6 column justify-start items-center q-py-md">
+    <div class="row justify-center items-center">
+      <q-btn @click="toggleSidebar" flat class="text-white hambergur-menu" icon="menu"></q-btn>
       <div class="login-btn-group justify-between items-center">
         <q-btn class="register-btn"><a>ثبت نام</a></q-btn>
-        <q-btn class="entrance-btn"><a> ورود</a></q-btn>
+        <q-btn class="entrance-btn"><a>ورود</a></q-btn>
       </div>
-      <!-- <q-space /> -->
       <q-toolbar-title dir="rtl" class="text-white title-container">
         <h6 class="title">{{ InsuranceHeaderInfo?.centreName }}</h6>
       </q-toolbar-title>
     </div>
     <div class="row justify-start items-center q-ml-auto">
-      <ul
-        v-if="!sidebarVisible"
-        class="navLink-container row justify-start items-center"
-      >
-        <li class="navLink-item">
-          <q-btn flat class="navLink-btn"><a href="/">خانه</a></q-btn>
-        </li>
-        <li class="navLink-item">
-          <q-btn flat class="navLink-btn"
-            ><a href="#">محصولات و خدمات</a></q-btn
-          >
-        </li>
-        <li class="navLink-item">
-          <q-btn flat class="navLink-btn"
-            ><a href="https://sabz.easybimeh.com/blog">مجله بیمه ای</a></q-btn
-          >
-        </li>
-        <li class="navLink-item">
-          <q-btn flat class="navLink-btn"><a href="#">پیگیری</a></q-btn>
-        </li>
-
-        <li class="navLink-item">
-          <q-btn flat class="navLink-btn"
-            ><a href="https://sabz.easybimeh.com/about">درباره ما</a></q-btn
-          >
-        </li>
-        <li class="navLink-item">
-          <q-btn flat class="navLink-btn"
-            ><a href="https://sabz.easybimeh.com/contactUs">
-              تماس با ما</a
-            ></q-btn
-          >
-        </li>
-      </ul>
-      <!-- <q-list
-      class="navLink-container text-white row justify-start items-center"
-      v-if="InsuranceNavbarMenuItems && !sidebarVisible"
-    >
-      <q-item v-for="(item, index) in InsuranceNavbarMenuItems" :key="index">
-        <q-item-section class="navLink-item">
-          <q-btn
-            flat
-            dense
-            class="navLink-btn"
-            :label="item.title"
-            :to="item.url"
-          />
-        </q-item-section>
-      </q-item>
-    </q-list>
-    <q-btn-dropdown
-      v-else-if="item.parentId"
-      v-for="item in getChildItems(item.parentId)"
-      :key="item.title"
-      class="navLink-container text-white row justify-start items-center"
-      split
-      flat
-      no-caps
-      :label="item.title"
-    >
-      <q-list>
-        <q-item class="navLink-item" v-close-popup>
-          <q-item-section class="navLink-btn">
-            {{ item.title }}
-          </q-item-section>
-        </q-item>
+      <q-list v-if="!sidebarVisible" class="navLink-container row justify-start items-center">
+          <q-item v-for="(item, index) in InsuranceNavbarMenuItems.filter(item => item.parentId == null)"  :key="index"   class="navLink-item">
+            <submenu class="navLink-btn" :isSubMenu="hasChildItems(item.id)" :menus="getChildItems(item.id)" :menu="item" :allMenu = "InsuranceNavbarMenuItems" isFirst/>
+          </q-item>
+          
+  
       </q-list>
-    </q-btn-dropdown> -->
-      <!-- <q-list
-        v-if="!sidebarVisible"
-        class="navLink-container row justify-start items-center"
-      >
-        <q-item v-for="(item, index) in InsuranceNavbarMenuItems" :key="index">
-          <q-item-section class="navLink-item">
-            <q-btn
-              v-if="!hasChildItems(item.id)"
-              flat
-              dense
-              class="navLink-btn"
-              :label="item.title"
-              :to="getUrl(item)"
-            />
-            <q-btn-dropdown
-              v-else
-              v-for="item in getChildItems(item.id)"
-              :key="item.title"
-              split
-              flat
-              no-caps
-              :label="item.title"
-            >
-              <q-list>
-                <q-item class="navLink-item" v-close-popup>
-                  <q-item-section
-                    class="navLink-btn"
-                    v-if="!hasGrandchildItems(item.id)"
-                  >
-                    {{ item.title }}
-                  </q-item-section>
-                  <q-item-section class="navLink-btn" v-else>
-                    <q-btn-dropdown
-                      v-for="item in getChildItems(item.id)"
-                      :key="item.title"
-                      split
-                      flat
-                      no-caps
-                      :label="item.title"
-                    >
-                      <q-list>
-                        <q-item class="navLink-item" v-close-popup>
-                          <q-item-section class="navLink-btn">
-                            {{ item.title }}
-                          </q-item-section>
-                        </q-item>
-                      </q-list>
-                    </q-btn-dropdown>
-                  </q-item-section>
-                </q-item>
-              </q-list>
-            </q-btn-dropdown>
-          </q-item-section>
-        </q-item>
-      </q-list> -->
-      <q-drawer
-        v-else
-        v-model="sidebarVisible"
-        side="left"
-        show-if-above
-        class="q-py-md"
-        :style="{ width: '200px' }"
-      >
+      <q-drawer v-else v-model="sidebarVisible" side="left" show-if-above class="q-py-md" :style="{ width: '200px' }">
         <q-separator class="q-my-xl" color="gray-blue-10" inset />
-        <div
-          class="column justify-center items-center sidebar-login-btn-container"
-        >
+        <div class="column justify-center items-center sidebar-login-btn-container">
           <q-btn class="register-btn btn-fixed-width"><a>ثبت نام</a></q-btn>
           <q-btn class="entrance-btn btn-fixed-width"><a>ورود</a></q-btn>
         </div>
         <q-list class="q-mt-md">
-          <q-item
-            v-for="(item, index) in InsuranceNavbarMenuItems"
-            :key="index"
-          >
+          <q-item v-for="(item, index) in InsuranceNavbarMenuItems" :key="index">
             <q-item-section class="item-section">
-              <q-btn
-                flat
-                dense
-                class="navLink-btn"
-                :label="item.title"
-                :to="item.url"
-              />
+              <q-btn flat dense class="navLink-btn" :label="item.title" :to="item.url" />
             </q-item-section>
           </q-item>
         </q-list>
@@ -178,62 +36,60 @@
   </q-toolbar>
 </template>
 
+
 <script>
 import { defineComponent, ref } from "vue";
 import apiService from "src/services/api-services";
+import submenu from 'src/components/Header/submenu.vue';
 export default defineComponent({
   name: "ToolbarNavigation",
-
+  components:{
+    submenu
+  },
   data() {
-    return {
-      InsuranceHeaderInfo: null,
-      InsuranceNavbarMenuItems: [],
-    };
-  },
-
-  mounted() {
-    this.getPolicyIntroduction();
-    this.getMenuesItem();
-    this.getChildItems();
-  },
-
-  methods: {
-    getPolicyIntroduction() {
-      apiService
-        .getPolicyIntroduction("sabz")
-        .then((response) => {
-          this.InsuranceHeaderInfo =
-            response.data.message?.insuranceCentrePortal;
-        })
-        .catch((error) => {
-          console.error("Error fetching insurance centre info:", error);
-        });
+      return {
+        InsuranceHeaderInfo: null,
+        InsuranceNavbarMenuItems: [],
+      };
     },
-    getMenuesItem() {
-      apiService
-        .getMenuesItem("sabz")
-        .then((response) => {
-          this.InsuranceNavbarMenuItems = response.data.message || [];
-        })
-        .catch((error) => {
-          console.error("Error fetching insurance centre info:", error);
-        });
+  
+    mounted() {
+      this.getPolicyIntroduction();
+      this.getMenuesItem();
     },
-    getUrl(item) {
-      const itemData = JSON.parse(item.url);
-      if (itemData.type === "redirect") {
-        return itemData.url;
+  
+    methods: {
+      getPolicyIntroduction() {
+        apiService
+          .getPolicyIntroduction('sabz')
+          .then((response) => {
+            this.InsuranceHeaderInfo = response.data.message?.insuranceCentrePortal;
+            
+          })
+          .catch((error) => {
+            console.error('Error fetching insurance centre info:', error);
+          });
+      },
+      getMenuesItem() {
+        apiService
+          .getMenuesItem('sabz')
+          .then((response) => {
+            this.InsuranceNavbarMenuItems = response.data.message;
+            console.log(79,this.InsuranceNavbarMenuItems.some(item=>item.parentId==null))
+          })
+          .catch((error) => {
+            console.error('Error fetching insurance centre info:', error);
+          });
+      },
+      hasChildItems(itemId){
+          return this.InsuranceNavbarMenuItems.filter(item=> item.parentId == itemId).length > 0;
+        
+      } ,
+      getChildItems(itemId){
+        console.log(89,itemId,this.InsuranceNavbarMenuItems.filter(item=> item.parentId == itemId))
+        return this.InsuranceNavbarMenuItems.filter((item) => item.parentId == itemId)
       }
-      return "#"; // Replace with your desired behavior for regular URLs
     },
-
-    // Get the child items for a given parent ID
-    getChildItems(parentId) {
-      return this.InsuranceNavbarMenuItems.filter(
-        (item) => item.parentId === parentId
-      );
-    },
-  },
   setup() {
     const sidebarVisible = ref(false);
     function toggleSidebar() {
@@ -253,10 +109,11 @@ export default defineComponent({
 }
 .title {
   font-size: 17px;
-  white-space: nowrap;
-  width: 100%;
+  white-space:nowrap; 
+  width:100%;
   margin-left: auto;
   font-weight: 500;
+  
 }
 
 .entrance-btn {
@@ -284,9 +141,7 @@ export default defineComponent({
 .navLink-container {
   list-style-type: none;
 }
-.navLink-item {
-  margin: 5px 10px;
-}
+
 .navLink-item a {
   text-decoration: none;
   color: #fff;
@@ -375,18 +230,19 @@ export default defineComponent({
   .sidebar-navLink-container {
     display: block;
   }
-  .register-btn,
-  .entrance-btn {
-    min-width: 230px;
+  .register-btn , .entrance-btn {
+    min-width:230px;
     width: 60%;
     text-align: center;
     margin: 6px auto !important;
   }
 }
 @media only screen and (max-width: 727px) {
+
   .hambergur-menu {
     display: block;
     margin-left: 165px;
   }
+
 }
 </style>
