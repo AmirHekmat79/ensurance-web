@@ -5,7 +5,7 @@
             <q-img src="@/assets/steps-icon.svg" width="50px" ></q-img>
         </div> 
         <div class="q-my-md">
-            <img class="banner" src="@/assets/mobile-banner.png" width="500px"/>
+            <img class="banner" src="@/assets/mobile-banner.png" width="400px"/>
             <div class="row justify-around items-center banner-cards">
               <q-card  v-for="(step, index) in steps" :key="index" class="text-center  cards shadow-10 q-mx-md q-pa-md">
                 <q-card-section class="column justify-between items-center flex-wrap">
