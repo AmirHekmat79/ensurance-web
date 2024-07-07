@@ -1,8 +1,8 @@
 <template>
     <div class="q-gutter-md text-center row justify-center q-mx-auto items-center">
-  <q-btn v-if="!isSubMenu" flat   :class="[isFirst ? 'Light' : 'Dark']"  :label="menu.title" :to="menu.url?.url"> </q-btn>
+  <q-btn v-if="!isSubMenu" flat   :class="[isFirst ? 'Light' : 'Dark']"  :label="menu.title" @click="handleUrl(menu.url)" > </q-btn>
 <div v-else>
-    <q-btn v-if="isFirst"  flat :class="[isFirst ? 'Light' : 'Dark']" :label="menu.title" :to="menu.url?.url">
+    <q-btn v-if="isFirst"  flat :class="[isFirst ? 'Light' : 'Dark']" :label="menu.title"  @click="handleUrl(menu.url)">
      <q-item-section side>
        <q-icon :color="isFirst ? 'black' : bgWhite"  name="keyboard_arrow_down"  />
      </q-item-section>
@@ -17,7 +17,7 @@
           </q-list>
         </q-menu>
 </q-btn>
-  <q-btn v-else  flat class="text-dark" :label="menu.title">
+  <q-btn v-else  flat class="text-dark" :label="menu.title"  @click="handleUrl(menu.url)">
      <q-item-section side>
        <q-icon :color="isFirst ? Dark : Light"  name="keyboard_arrow_left" />
      </q-item-section>
@@ -64,10 +64,26 @@
             let newIsSubMenu= this.allMenu.some((item) => item.parentId == id)
             return newIsSubMenu;
         },
+        handleUrl(URL){
+          const urlObject = JSON.parse(URL);
+          const { type, url: urlPath } = urlObject;
+          
+          const baseUrl = 'https://sabz.easybimeh.com';
+
+          if (type === 'open') {
+            window.location.href =  `${baseUrl}${urlPath}`;
+          } else if (type === 'redirect') {
+            window.location.href =  `/`;
+          } else {
+            console.error("Unsupported URL type:", type);
+            return '#';
+          }
+          }
+        }
         
     }
     
-  });
+  );
   </script>
   <style scoped>
   .linkItems{
